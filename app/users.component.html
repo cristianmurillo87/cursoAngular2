@@ -1,1 +1,24 @@
  <h1>Usuarios</h1>
+ <p>
+     <a class="btn btn-primary" href="/users/new">
+        Agregar Usuario
+     </a>
+ </p>
+ <table class="table table-bordered">
+     <thead>
+         <tr>
+             <th>Nombre</th>
+             <th>Correo</th>
+             <th>Editar</th>
+             <th>Eliminar</th>
+         </tr>
+     </thead>
+     <tbody>
+         <tr *ngFor="#user of users" >
+             <td>{{user.name}}</td>
+             <td>{{user.email}}</td>
+             <td><i class="glyphicon glyphicon-edit"></i></td>
+             <td><i class="glyphicon glyphicon-remove"></i></td>
+         </tr>
+     </tbody>
+ </table>
