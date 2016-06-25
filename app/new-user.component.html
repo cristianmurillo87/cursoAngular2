@@ -1,38 +1,66 @@
 <h2>Agregar Usuario</h2>
 <div class="col-md-6 col-lg-6 well">
-    <form action="">
-        <fieldset>
+    <form [ngFormModel]="form" >
+        <fieldset ngControlGroup="users">
             <legend>Usuario</legend>
             <div class="form-group">
                 <label for="new-user-name">Nombre</label>
-                <input type="text" id="new-user-name" class="form-control">
+                <input type="text" 
+                       id="new-user-name" 
+                       class="form-control"
+                       ngControl="username"
+                       #username="ngForm">
             </div>
             <div class="form-group">
                 <label for="new-user-email">Correo Electronico</label>
-                <input type="text" id="new-user-email" class="form-control">
+                <input type="text" 
+                       id="new-user-email" 
+                       class="form-control"
+                       ngControl="email"
+                       #email="ngForm">
             </div>
             <div class="form-group">
                 <label for="new-user-phone">Telefono</label>
-                <input type="text" id="new-user-phone" class="form-control">
+                <input type="text" 
+                       id="new-user-phone" 
+                       class="form-control"
+                       ngControl="phone"
+                       #email="ngForm">
             </div>
         </fieldset>
-            <fieldset>
+        <fieldset ngControlGroup="address">
             <legend>Direccion</legend>
             <div class="form-group">
                 <label for="new-user-street">Direccion</label>
-                <input type="text" id="new-user-street" class="form-control">
+                <input type="text"
+                       id="new-user-street"
+                       class="form-control"
+                       ngControl="street"
+                       #street="ngForm">
             </div>
             <div class="form-group">
                 <label for="new-user-suite">Suite</label>
-                <input type="text" id="new-user-suite" class="form-control">
+                <input type="text"
+                       id="new-user-suite" 
+                       class="form-control"
+                       ngControl="suite"
+                       #suite="ngForm">
             </div>
             <div class="form-group">
                 <label for="new-user-city">Ciudad</label>
-                <input type="text" id="new-user-city" class="form-control">
+                <input type="text" 
+                       id="new-user-city" 
+                       class="form-control"
+                       ngControl="city"
+                       #city="ngForm">
             </div>
             <div class="form-group">
                 <label for="new-user-zipcode">Codigo Postal</label>
-                <input type="text" id="new-user-zipcode" class="form-control">
+                <input type="text" 
+                       id="new-user-zipcode" 
+                       class="form-control"
+                       ngControl="zipcode"
+                       #zipcode="ngForm">
             </div>
         </fieldset>
         <button type="submit" class="btn btn-primary">Guardar</button>
