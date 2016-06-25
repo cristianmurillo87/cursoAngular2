@@ -1,0 +1,34 @@
+<form>
+	<div class="form-group">
+		<label for="nombre">Nombre</label>
+		<input 
+			ngControl="nombre" 
+			#nombre="ngForm" 
+			id="nombre" 
+			type="text" 
+			class="form-control" 
+			required
+			minlength="5">
+		<div *ngIf="nombre.touched && nombre.errors">
+			<div class="alert alert-danger" *ngIf="nombre.errors.required">
+				El nombre es requerido.
+			</div>
+			<div class="alert alert-danger" *ngIf="nombre.errors.minlength">
+				El primer nombre debe tener minimo {{nombre.errors.minlength.requiredLength}} caracteres, faltan 
+				{{nombre.errors.minlength.requiredLength-nombre.errors.minlength.actualLength}} caracteres.
+			</div>		
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="comentario">Comentario</label>
+		<textarea 
+			ngControl="comentario" 
+			#comentario="ngForm" 
+			id="comentario" 
+			cols="30" rows="10" 
+			class="form-control" 
+			required></textarea>
+		<div class="alert alert-danger" *ngIf="comentario.touched && !comentario.valid">El comentario es requerido.</div>
+	</div>
+	<button class="btn btn-primary" type="submit">Enviar</button>
+</form>

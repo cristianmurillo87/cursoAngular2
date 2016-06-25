@@ -1,0 +1,16 @@
+<br>
+<div *ngFor = "#tweet of tweets">
+	<div class="media">
+	  <div class="media-left">
+	    <a href="#">
+	      <img class="media-object" src="http://lorempixel.com/100/100/people/{{tweet.id}}" alt="{{tweet.author}}">
+	    </a>
+	  </div>
+	  <div class="media-body">
+	    <h4 class="media-heading">{{tweet.author}} <small>{{tweet.handle}}</small></h4>
+	    <p>{{tweet.comment}}</p>
+	    <heart [likes] = "tweet.likes"></heart>
+	  </div>
+	</div>
+	<br>
+</div>

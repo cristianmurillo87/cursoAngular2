@@ -1,0 +1,10 @@
+	<div class = "panel panel-info">
+		<div class="panel-heading" (click) = "toggle()">
+			{{title}} 
+			<chevron [clicked] = "isExpanded"></chevron>
+		</div>
+		<div class="panel-body" *ngIf="isExpanded">
+			<ng-content></ng-content>
+		</div>
+	</div>
+

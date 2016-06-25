@@ -1,0 +1,7 @@
+<i class="glyphicon"
+		[ngClass]="{
+			'glyphicon-star-empty': !isClicked,
+			'glyphicon-star': isClicked
+		}"
+		(click)="onClick()"
+></i>
