@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', './users.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'angular2/router', './users.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', './users.service'], function(
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, users_service_1;
+    var core_1, http_1, router_1, users_service_1;
     var UsersComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', 'angular2/http', './users.service'], function(
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             },
             function (users_service_1_1) {
                 users_service_1 = users_service_1_1;
@@ -38,7 +41,8 @@ System.register(['angular2/core', 'angular2/http', './users.service'], function(
                 UsersComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/users.component.html',
-                        providers: [users_service_1.UsersService, http_1.HTTP_PROVIDERS]
+                        providers: [users_service_1.UsersService, http_1.HTTP_PROVIDERS],
+                        directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [users_service_1.UsersService])
                 ], UsersComponent);
