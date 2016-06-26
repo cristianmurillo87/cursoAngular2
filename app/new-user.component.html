@@ -1,7 +1,7 @@
 <h2>Agregar Usuario</h2>
 <div class="col-md-6 col-lg-6 well">
     <form [ngFormModel]="form" >
-        <fieldset ngControlGroup="users" #users="ngForm">
+        <fieldset>
             <legend>Usuario</legend>
             <div class="form-group">
                 <label for="new-user-name">Nombre</label>
@@ -23,8 +23,6 @@
                        ngControl="email"
                        #email="ngForm">
             </div>
-            {{email.errors |json}}
-            {{form.errors |json}}
             <p *ngIf="email.touched && email.errors" class="invalid">
                 <span *ngIf="email.errors.required">El correo electronico es requerido</span>                   
             </p>

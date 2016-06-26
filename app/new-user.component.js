@@ -27,17 +27,11 @@ System.register(['angular2/core', 'angular2/common', './emailValidator'], functi
             NewUserComponent = (function () {
                 function NewUserComponent(fb) {
                     this.form = fb.group({
-                        users: fb.group({
-                            username: ['', common_1.Validators.compose([
-                                    common_1.Validators.required
-                                ])],
-                            email: ['', common_1.Validators.compose([
-                                    common_1.Validators.required
-                                ])],
-                            phone: ['', common_1.Validators.compose([
-                                    common_1.Validators.required
-                                ])]
-                        }),
+                        username: ['', common_1.Validators.required],
+                        email: ['', common_1.Validators.compose([
+                                common_1.Validators.required
+                            ])],
+                        phone: ['', common_1.Validators.required],
                         address: fb.group({
                             street: ['', common_1.Validators.compose([
                                     common_1.Validators.required

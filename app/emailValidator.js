@@ -9,7 +9,7 @@ System.register([], function(exports_1, context_1) {
                 function EmailValidator() {
                 }
                 EmailValidator.emailValid = function (control) {
-                    var email = control.find('users').find('email').value;
+                    var email = control.find('email').value;
                     var filter = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                     if (!filter.test(email)) {
                         return { emailValid: true };

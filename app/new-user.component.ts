@@ -10,17 +10,11 @@ export class NewUserComponent{
 
     constructor(fb: FormBuilder){
         this.form = fb.group({
-            users: fb.group({
-                username:['', Validators.compose([
-                    Validators.required
+            username:['',Validators.required],
+            email:['', Validators.compose([
+                Validators.required
                 ])],
-                email:['', Validators.compose([
-                    Validators.required
-                    ])],
-                phone:['', Validators.compose([
-                    Validators.required
-                ])]
-            }),
+            phone:['', Validators.required],
             address:fb.group({
                 street:['', Validators.compose([
                     Validators.required
