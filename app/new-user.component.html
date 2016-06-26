@@ -1,7 +1,7 @@
 <h2>Agregar Usuario</h2>
 <div class="col-md-6 col-lg-6 well">
     <form [ngFormModel]="form" >
-        <fieldset ngControlGroup="users">
+        <fieldset ngControlGroup="users" #users="ngForm">
             <legend>Usuario</legend>
             <div class="form-group">
                 <label for="new-user-name">Nombre</label>
@@ -11,6 +11,10 @@
                        ngControl="username"
                        #username="ngForm">
             </div>
+            <p *ngIf="username.touched && username.errors" class="invalid">
+                El nombre es requerido 
+                <br>
+            </p>
             <div class="form-group">
                 <label for="new-user-email">Correo Electronico</label>
                 <input type="text" 
@@ -19,14 +23,27 @@
                        ngControl="email"
                        #email="ngForm">
             </div>
+            {{email.errors |json}}
+            {{form.errors |json}}
+            <p *ngIf="email.touched && email.errors" class="invalid">
+                <span *ngIf="email.errors.required">El correo electronico es requerido</span>                   
+            </p>
+            <p *ngIf="email.touched && form.errors" class="invalid">    
+                <span *ngIf="form.errors.emailValid">Correo invalido</span>
+                <br>
+            </p>           
             <div class="form-group">
                 <label for="new-user-phone">Telefono</label>
                 <input type="text" 
                        id="new-user-phone" 
                        class="form-control"
                        ngControl="phone"
-                       #email="ngForm">
+                       #phone="ngForm">
             </div>
+            <p *ngIf="phone.touched && phone.errors" class="invalid">
+                El numero telefonico es requerido 
+                <br>
+            </p>
         </fieldset>
         <fieldset ngControlGroup="address">
             <legend>Direccion</legend>
@@ -37,7 +54,12 @@
                        class="form-control"
                        ngControl="street"
                        #street="ngForm">
+
             </div>
+            <p *ngIf="street.touched && street.errors" class="invalid">
+                La direccion es requerida 
+                <br>
+            </p>
             <div class="form-group">
                 <label for="new-user-suite">Suite</label>
                 <input type="text"
@@ -46,6 +68,10 @@
                        ngControl="suite"
                        #suite="ngForm">
             </div>
+            <p *ngIf="suite.touched && suite.errors" class="invalid">
+                Suite es requerida 
+                <br>
+            </p>
             <div class="form-group">
                 <label for="new-user-city">Ciudad</label>
                 <input type="text" 
@@ -54,6 +80,10 @@
                        ngControl="city"
                        #city="ngForm">
             </div>
+            <p *ngIf="city.touched && city.errors" class="invalid">
+                La ciudad es requerida 
+                <br>
+            </p>
             <div class="form-group">
                 <label for="new-user-zipcode">Codigo Postal</label>
                 <input type="text" 
@@ -62,7 +92,11 @@
                        ngControl="zipcode"
                        #zipcode="ngForm">
             </div>
+            <p *ngIf="zipcode.touched && zipcode.errors" class="invalid">
+                El codigo postal es requerido
+                <br>
+            </p>
         </fieldset>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Guardar</button>
     </form>
 </div>

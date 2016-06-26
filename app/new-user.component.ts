@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {ControlGroup, FormBuilder, Validators} from 'angular2/common';
+import {EmailValidator} from './emailValidator'
 
 @Component({
     templateUrl:'app/new-user.component.html'
@@ -35,6 +36,8 @@ export class NewUserComponent{
                 ])]                      
             })      
 
+        },{
+            validator: EmailValidator.emailValid
         });
     }
 
