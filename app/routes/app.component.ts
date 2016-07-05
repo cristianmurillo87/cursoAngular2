@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {HTTP_PROVIDERS} from 'angular2/http';
 
 import {AlbumsComponent} from './albums.component';
 import {AlbumComponent} from './album.component';

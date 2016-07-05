@@ -1,6 +1,6 @@
-<h2>Agregar Usuario</h2>
+<h2>{{title}}</h2>
 <div class="col-md-6 col-lg-6 well">
-    <form [ngFormModel]="form" >
+    <form [ngFormModel]="form" (ngSubmit)="save()"  >
         <fieldset>
             <legend>Usuario</legend>
             <div class="form-group">
@@ -8,6 +8,7 @@
                 <input type="text" 
                        id="new-user-name" 
                        class="form-control"
+                       [(ngModel)]="user.name" 
                        ngControl="username"
                        #username="ngForm">
             </div>
@@ -20,6 +21,7 @@
                 <input type="text" 
                        id="new-user-email" 
                        class="form-control"
+                       [(ngModel)]="user.email"
                        ngControl="email"
                        #email="ngForm">
             </div>
@@ -35,6 +37,7 @@
                 <input type="text" 
                        id="new-user-phone" 
                        class="form-control"
+                       [(ngModel)]="user.phone"
                        ngControl="phone"
                        #phone="ngForm">
             </div>
@@ -50,6 +53,7 @@
                 <input type="text"
                        id="new-user-street"
                        class="form-control"
+                       [(ngModel)]="user.address.street"
                        ngControl="street"
                        #street="ngForm">
 
@@ -63,6 +67,7 @@
                 <input type="text"
                        id="new-user-suite" 
                        class="form-control"
+                       [(ngModel)]="user.address.suite"
                        ngControl="suite"
                        #suite="ngForm">
             </div>
@@ -75,6 +80,7 @@
                 <input type="text" 
                        id="new-user-city" 
                        class="form-control"
+                       [(ngModel)]="user.address.city"
                        ngControl="city"
                        #city="ngForm">
             </div>
@@ -87,6 +93,7 @@
                 <input type="text" 
                        id="new-user-zipcode" 
                        class="form-control"
+                       [(ngModel)]="user.address.zipcode"
                        ngControl="zipcode"
                        #zipcode="ngForm">
             </div>

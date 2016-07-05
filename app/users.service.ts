@@ -1,5 +1,5 @@
 import {Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {Http, Response} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -14,5 +14,24 @@ export class UsersService{
     getUsers(){
         return this._http.get(this._url)
                 .map(users => users.json());
+    }
+
+   getUser(id){
+       var url = this._url + '/' + id;
+        return this._http.get(url)
+                .map(users => users.json());
+    }
+
+    saveUsers(form: any){
+
+        var body = JSON.stringify({form});
+        return this._http.post(this._url, body)
+                .map(this.getResponse);
+
+    }
+
+    private getResponse(res: Response){   
+        var response = res.json();
+        return response.data || {};
     }
 }

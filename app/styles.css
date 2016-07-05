@@ -1,7 +1,7 @@
 
-.ng-touched.ng-invalid {
+/*.ng-touched.ng-invalid {
     border: 2px solid crimson;
-}
+}*/
 
 .invalid{
     color: crimson;
