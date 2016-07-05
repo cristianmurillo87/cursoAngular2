@@ -29,9 +29,7 @@ System.register(['angular2/http', 'rxjs/add/operator/map', 'rxjs/add/operator/to
                     this._url = "http://jsonplaceholder.typicode.com/posts";
                 }
                 PostService.prototype.getPosts = function () {
-                    return this._http.get(this._url)
-                        .map(function (res) { return res.json(); })
-                        .toPromise();
+                    return this._http.get(this._url).map(function (res) { return res.json(); });
                 };
                 PostService.prototype.createPost = function (post) {
                     this._http.post(this._url, JSON.stringify(post))

@@ -13,10 +13,9 @@ export class PostService{
     constructor(private _http: Http){
     }
     
-    getPosts(): Promise<Post[]>{
-        return this._http.get(this._url)
-            .map(res=> res.json())
-            .toPromise();
+    getPosts(){
+        return this._http.get(this._url).map(res=> res.json());
+            
     }
 
     createPost(post){
