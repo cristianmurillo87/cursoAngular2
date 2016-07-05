@@ -31,6 +31,19 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', './users.s
                 function UsersComponent(_usersService) {
                     this._usersService = _usersService;
                 }
+                UsersComponent.prototype.deleteUser = function (user) {
+                    var _this = this;
+                    if (confirm('Desea Eliminar al usuario ' + user.name + ' ?')) {
+                        var id = user.id;
+                        this._usersService.deleteUser(id)
+                            .subscribe(function (response) {
+                            var index = _this.users.indexOf(user);
+                            _this.users.splice(index, 1);
+                        }, function (error) {
+                            console.log(error);
+                        });
+                    }
+                };
                 UsersComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this._usersService.getUsers()

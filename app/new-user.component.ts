@@ -46,11 +46,16 @@ export class NewUserComponent implements CanDeactivate, OnInit{
     }
 
     save(){
-        	this._userService.saveUsers(this.form.value)
-                .subscribe(res => {
-                    this._router.navigate(['Users']);
+        	
+            if(this.user.id){
+                this._userService.editUser(this.user);
+            }
+            else{
+                this._userService.saveUsers(this.user);
+            }
 
-                });
+            this._router.navigate(['Users']);
+            
     }
 
     

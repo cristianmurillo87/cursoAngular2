@@ -10,9 +10,27 @@ import {UsersService} from './users.service';
     directives: [ROUTER_DIRECTIVES]
 })
 export class UsersComponent implements OnInit{
-    users;
+    users: any [];
 
     constructor( private _usersService: UsersService){
+
+    }
+
+    deleteUser(user){
+        
+        if(confirm('Desea Eliminar al usuario ' + user.name + ' ?')){
+            var id = user.id;
+            this._usersService.deleteUser(id)
+            .subscribe(
+                response =>{
+                    var index = this.users.indexOf(user);
+                    this.users.splice(index, 1);
+                },
+                error =>{
+                    console.log(error);
+                }
+            );
+        }
 
     }
 

@@ -67,11 +67,13 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', 'angular2/
                     });
                 }
                 NewUserComponent.prototype.save = function () {
-                    var _this = this;
-                    this._userService.saveUsers(this.form.value)
-                        .subscribe(function (res) {
-                        _this._router.navigate(['Users']);
-                    });
+                    if (this.user.id) {
+                        this._userService.editUser(this.user);
+                    }
+                    else {
+                        this._userService.saveUsers(this.user);
+                    }
+                    this._router.navigate(['Users']);
                 };
                 NewUserComponent.prototype.routerCanDeactivate = function (next, previous) {
                     /*console.log("next", next);
