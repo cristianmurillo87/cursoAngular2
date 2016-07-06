@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{title}}</h3>
+    </div>
+    <div class="panel-body">{{body}}</div>
+    <spinner *ngIf="loading"></spinner>
+    <div class="panel-body">
+        <div *ngFor="#comment of comments" class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img src="http://lorempixel.com/80/80/people/{{comment.id}}" alt="..." class="media-object">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4>{{comment.name}}</h4>
+                {{comment.body}}
+            </div>
+        </div>
+    </div>
+
+</div> 

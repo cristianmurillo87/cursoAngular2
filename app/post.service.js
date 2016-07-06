@@ -31,9 +31,18 @@ System.register(['angular2/http', 'rxjs/add/operator/map', 'rxjs/add/operator/to
                 PostService.prototype.getPosts = function () {
                     return this._http.get(this._url).map(function (res) { return res.json(); });
                 };
+                PostService.prototype.getUserPosts = function (userId) {
+                    return this._http.get(this._url + '?userId=' + userId).map(function (res) { return res.json(); });
+                };
                 PostService.prototype.createPost = function (post) {
                     this._http.post(this._url, JSON.stringify(post))
                         .map(function (res) { return res.json(); });
+                };
+                PostService.prototype.getComments = function (id) {
+                    return this._http.get(this.getUrl(id)).map(function (res) { return res.json(); });
+                };
+                PostService.prototype.getUrl = function (id) {
+                    return this._url + '/' + id + '/comments';
                 };
                 PostService = __decorate([
                     core_1.Injectable(), 

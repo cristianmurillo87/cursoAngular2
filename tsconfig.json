@@ -12,6 +12,31 @@
   "exclude": [
     "node_modules",
     "typings/main",
-    "typings/main.d.ts"
+    "typings/main.d.ts",
+    "cursoAngular2",
+    "app/control-group",
+    "app/custom-pipes",
+    "app/ejercicio-1",
+    "app/ejercicio-2",
+    "app/ejercicio-3",
+    "app/ejercicio-4",
+    "app/ejercicio-5",
+    "app/ejercicio-6",
+    "app/ejercicio-7",
+    "app/ejercicio-8",
+    "app/http",
+    "app/ngclass",
+    "app/ngcontent",
+    "app/ngcontrol",
+    "app/ngfor",
+    "app/ngform",
+    "app/ngstyle",
+    "app/ngswitch",
+    "app/pipes-1",
+    "app/reto1",
+    "app/routes",
+    "app/rx",
+    "app/validacion",
+    ".git"
   ]
 }

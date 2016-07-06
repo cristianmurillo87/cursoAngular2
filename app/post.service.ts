@@ -10,6 +10,7 @@ export class PostService{
 
     private _url = "http://jsonplaceholder.typicode.com/posts";
 
+
     constructor(private _http: Http){
     }
     
@@ -18,9 +19,21 @@ export class PostService{
             
     }
 
+    getUserPosts(userId){
+        return this._http.get(this._url+'?userId='+userId).map(res=> res.json());
+    }
+
     createPost(post){
         this._http.post(this._url, JSON.stringify(post))
             .map(res=> res.json());
 
+    }
+
+    getComments(id){
+        return this._http.get(this.getUrl(id)).map(res=>res.json());
+    }
+
+    private getUrl(id){
+        return this._url+'/'+id+'/comments';
     }
 }
