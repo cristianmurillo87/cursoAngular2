@@ -47,32 +47,34 @@ System.register(['angular2/core', 'angular2/http', './master-detail.component', 
                 }
                 PostsComponent.prototype.getComments = function (post) {
                     var _this = this;
+                    this.commentsLoading = true;
+                    this.currentComments = [];
                     this._postService.getComments(post.id)
                         .subscribe(function (comments) {
                         _this.currentComments = comments;
-                        _this.commentsLoading = false;
                     }, function (error) {
                         alert(error);
                     });
+                    this.commentsLoading = false;
                 };
                 PostsComponent.prototype.getPosts = function () {
                     var _this = this;
+                    this.postLoading = true;
                     this._postService.getPosts()
                         .subscribe(function (posts) {
                         _this.posts = posts;
                     });
-                    this.postLoading = false;
                 };
                 PostsComponent.prototype.reloadPosts = function (id) {
                     var _this = this;
                     this.postLoading = true;
+                    this.isClicked = false;
                     if (id == "") {
                         this.getPosts();
                     }
                     else {
                         this._postService.getUserPosts(id)
                             .subscribe(function (posts) {
-                            console.log(posts);
                             _this.posts = posts;
                         });
                     }
@@ -80,9 +82,9 @@ System.register(['angular2/core', 'angular2/http', './master-detail.component', 
                 };
                 PostsComponent.prototype.setPost = function (post) {
                     this.selectedPost = post;
-                    this.getComments(post);
                     if (!this.isClicked)
                         this.isClicked = true;
+                    this.getComments(post);
                 };
                 PostsComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -91,6 +93,7 @@ System.register(['angular2/core', 'angular2/http', './master-detail.component', 
                         .subscribe(function (users) {
                         _this.users = users;
                     });
+                    this.postLoading = false;
                 };
                 PostsComponent = __decorate([
                     core_1.Component({

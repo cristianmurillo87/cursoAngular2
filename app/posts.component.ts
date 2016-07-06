@@ -38,45 +38,52 @@ export class PostsComponent implements OnInit{
     }
 
     getComments(post){
+
+        this.commentsLoading = true;
+        this.currentComments = [];
         this._postService.getComments(post.id)
         .subscribe(comments=>{
             this.currentComments = comments;
-            this.commentsLoading = false;
+            
         },
         error=>{
             alert(error);
-        })
+        });
+
+        this.commentsLoading = false;
     }
 
     getPosts(){
+        this.postLoading = true;
         this._postService.getPosts()
         .subscribe(posts =>{
               this.posts = posts;
         });
 
-        this.postLoading = false;
     }
 
     reloadPosts(id){
         this.postLoading = true;
-        if(id==""){
-            this.getPosts();
-        }
-        else{
-            this._postService.getUserPosts(id)
-            .subscribe(posts=>{
-                console.log(posts);
-                this.posts = posts;
-            });
-        }
-         this.postLoading = false;   
+        this.isClicked = false;
+            if(id==""){
+                this.getPosts();
+            }
+            else{
+                this._postService.getUserPosts(id)
+                .subscribe(posts=>{
+                    this.posts = posts;
+                });
+            }
+        
+        this.postLoading = false;
     }
 
     setPost(post){
         this.selectedPost = post;
-        this.getComments(post);
         if(!this.isClicked)
             this.isClicked = true;
+        this.getComments(post);
+        
     }
 
     ngOnInit(){
@@ -86,6 +93,9 @@ export class PostsComponent implements OnInit{
         this._userService.getUsers()
         .subscribe(users=>{
             this.users = users;
-        })
+        });
+
+        
+        this.postLoading = false;
     }
 }
