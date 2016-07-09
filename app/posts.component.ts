@@ -1,6 +1,7 @@
 import {Component, OnInit} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {MasterDetailComponent} from './master-detail.component';
+import {PaginationComponent} from './pagination.component';
 import {SpinnerComponent} from './spinner.component';
 import {PostService} from './post.service';
 import {UsersService} from './users.service';
@@ -21,81 +22,76 @@ import {Post} from './post';
             color: #2c3e50;
         }
     `], 
-    directives: [SpinnerComponent, MasterDetailComponent],
+    directives: [SpinnerComponent, MasterDetailComponent, PaginationComponent],
     providers: [HTTP_PROVIDERS, PostService, UsersService]
 })
 export class PostsComponent implements OnInit{
-    posts: any [];
+    posts: any []=[];
     users: any[];
-    postLoading = true;
+    postLoading;
     selectedPost = new Post();
     currentComments: any[];
-    commentsLoading = true;
-    isClicked = false;
+    commentsLoading;
+    isClicked;
+    postsPerPage= 10;
+    pagedPosts=[];
+
+
 
     constructor(private _postService: PostService, private _userService: UsersService){
 
     }
 
-    getComments(post){
-
+    private getComments(post){
         this.commentsLoading = true;
-        this.currentComments = [];
+        this.currentComments = null;
         this._postService.getComments(post.id)
         .subscribe(comments=>{
-            this.currentComments = comments;
-            
-        },
-        error=>{
-            alert(error);
-        });
-
-        this.commentsLoading = false;
+            this.currentComments = comments;          
+        },null,
+        ()=>{this.commentsLoading = false;});
     }
 
-    getPosts(){
+    private getPosts(filter?){
         this.postLoading = true;
-        this._postService.getPosts()
+        this._postService.getPosts(filter)
         .subscribe(posts =>{
               this.posts = posts;
+              this.pagedPosts = _.take(this.posts, this.postsPerPage);
+        }, null,
+        ()=>{ 
+            this.postLoading = false;
         });
 
     }
 
-    reloadPosts(id){
-        this.postLoading = true;
-        this.isClicked = false;
-            if(id==""){
-                this.getPosts();
-            }
-            else{
-                this._postService.getUserPosts(id)
-                .subscribe(posts=>{
-                    this.posts = posts;
-                });
-            }
-        
-        this.postLoading = false;
-    }
-
-    setPost(post){
-        this.selectedPost = post;
-        if(!this.isClicked)
-            this.isClicked = true;
-        this.getComments(post);
-        
-    }
-
-    ngOnInit(){
-
-        this.getPosts();
-
+    private getUsers(){
         this._userService.getUsers()
         .subscribe(users=>{
             this.users = users;
         });
+    }
 
+    reloadPosts(filter){
+        this.selectedPost = null;
+        this.isClicked = false;
+        this.getPosts(filter);
+    }
+
+    setPost(post){
+        this.selectedPost = post;
+        this.isClicked = true;
+        this.getComments(post);
         
-        this.postLoading = false;
+    }
+
+    onPageChanged(page){
+        var startIndex = (page-1) * this.postsPerPage;
+        this.pagedPosts = _.take(_.rest(this.posts, startIndex), this.postsPerPage);
+    }
+
+    ngOnInit(){
+        this.getPosts();
+        this.getUsers();
     }
 }

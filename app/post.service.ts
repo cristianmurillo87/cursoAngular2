@@ -14,14 +14,15 @@ export class PostService{
     constructor(private _http: Http){
     }
     
-    getPosts(){
+    getPosts(filter?){
+
+        if(filter && filter.userId){
+            return this._http.get(this._url+'?userId='+filter.userId).map(res=> res.json());
+        }
         return this._http.get(this._url).map(res=> res.json());
             
     }
 
-    getUserPosts(userId){
-        return this._http.get(this._url+'?userId='+userId).map(res=> res.json());
-    }
 
     createPost(post){
         this._http.post(this._url, JSON.stringify(post))

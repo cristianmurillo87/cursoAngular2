@@ -1,14 +1,16 @@
  <h1>Posts</h1>
 
-<spinner [visible] ="postLoading"></spinner>
+
 <div class="row">
     <div class="col-sm-6">
-        <select #u class="form-control"  (change)="reloadPosts(u.value)">
+        <select #u class="form-control"  (change)="reloadPosts({userId: u.value})">
             <option value="">Seleccionar usuario</option>
             <option  *ngFor="#user of users" value="{{user.id}}">{{user.name}}</option>
         </select>
+        <spinner [visible] ="postLoading"></spinner>
+        <pagination [items]="posts" (page-changed)="onPageChanged($event)"></pagination>
         <div class="list-group">
-            <button *ngFor="#post of posts" class="list-group-item"
+            <button *ngFor="#post of pagedPosts" class="list-group-item"
              [class.active]="post == selectedPost" (click)="setPost(post)">{{post.title}}</button>
         </div>
     </div>
