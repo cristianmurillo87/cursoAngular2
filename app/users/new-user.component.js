@@ -101,10 +101,9 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', 'angular2/
                         templateUrl: 'app/new-user.component.html',
                         providers: [users_service_1.UsersService, http_1.HTTP_PROVIDERS]
                     }), 
-                    __metadata('design:paramtypes', [common_1.FormBuilder, (typeof (_a = typeof users_service_1.UsersService !== 'undefined' && users_service_1.UsersService) === 'function' && _a) || Object, router_1.Router, router_1.RouteParams])
+                    __metadata('design:paramtypes', [common_1.FormBuilder, users_service_1.UsersService, router_1.Router, router_1.RouteParams])
                 ], NewUserComponent);
                 return NewUserComponent;
-                var _a;
             }());
             exports_1("NewUserComponent", NewUserComponent);
         }

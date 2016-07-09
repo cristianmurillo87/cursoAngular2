@@ -100,9 +100,10 @@ System.register(['angular2/core', 'angular2/http', './master-detail.component', 
                         directives: [spinner_component_1.SpinnerComponent, master_detail_component_1.MasterDetailComponent, pagination_component_1.PaginationComponent],
                         providers: [http_1.HTTP_PROVIDERS, post_service_1.PostService, users_service_1.UsersService]
                     }), 
-                    __metadata('design:paramtypes', [post_service_1.PostService, users_service_1.UsersService])
+                    __metadata('design:paramtypes', [post_service_1.PostService, (typeof (_a = typeof users_service_1.UsersService !== 'undefined' && users_service_1.UsersService) === 'function' && _a) || Object])
                 ], PostsComponent);
                 return PostsComponent;
+                var _a;
             }());
             exports_1("PostsComponent", PostsComponent);
         }
