@@ -2,12 +2,12 @@ import {Component, OnInit} from 'angular2/core';
 import {ControlGroup, FormBuilder, Validators} from 'angular2/common';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {Router, CanDeactivate, RouteParams} from 'angular2/router';
-import {EmailValidator} from './emailValidator';
+import {EmailValidator} from '../users/emailValidator';
 import {UsersService} from './users.service';
 import {User} from './user';
 
 @Component({
-    templateUrl:'app/new-user.component.html',
+    templateUrl:'app/users/new-user.component.html',
     providers: [UsersService, HTTP_PROVIDERS]
 })
 export class NewUserComponent implements CanDeactivate, OnInit{

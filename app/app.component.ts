@@ -3,9 +3,9 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {NavBarComponent} from './navbar.component';
 import {HomeComponent} from './home.component';
-import {UsersComponent} from './users.component';
-import {PostsComponent} from './posts.component';
-import {NewUserComponent} from './new-user.component';
+import {UsersComponent} from './users/users.component';
+import {PostsComponent} from './posts/posts.component';
+import {NewUserComponent} from './users/new-user.component';
 import {NotFoundComponent} from './not-found.component';
 
 

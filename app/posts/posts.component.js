@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', './master-detail.component', './pagination.component', './spinner.component', './post.service', './users.service', './post'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', '../posts/master-detail.component', '../shared/pagination.component', '../shared/spinner.component', '../posts/post.service', '../users/users.service', './post'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -95,15 +95,14 @@ System.register(['angular2/core', 'angular2/http', './master-detail.component', 
                 };
                 PostsComponent = __decorate([
                     core_1.Component({
-                        templateUrl: 'app/posts.component.html',
+                        templateUrl: 'app/posts/posts.component.html',
                         styles: ["\n         li { cursor: default; }\n         li:hover { background: #ecf0f1; } \n        .list-group-item.active, \n        .list-group-item.active:hover, \n        .list-group-item.active:focus { \n            background-color: #ecf0f1;\n            border-color: #ecf0f1; \n            color: #2c3e50;\n        }\n    "],
                         directives: [spinner_component_1.SpinnerComponent, master_detail_component_1.MasterDetailComponent, pagination_component_1.PaginationComponent],
                         providers: [http_1.HTTP_PROVIDERS, post_service_1.PostService, users_service_1.UsersService]
                     }), 
-                    __metadata('design:paramtypes', [post_service_1.PostService, (typeof (_a = typeof users_service_1.UsersService !== 'undefined' && users_service_1.UsersService) === 'function' && _a) || Object])
+                    __metadata('design:paramtypes', [post_service_1.PostService, users_service_1.UsersService])
                 ], PostsComponent);
                 return PostsComponent;
-                var _a;
             }());
             exports_1("PostsComponent", PostsComponent);
         }

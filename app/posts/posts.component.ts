@@ -1,16 +1,16 @@
 import {Component, OnInit} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
-import {MasterDetailComponent} from './master-detail.component';
-import {PaginationComponent} from './pagination.component';
-import {SpinnerComponent} from './spinner.component';
-import {PostService} from './post.service';
-import {UsersService} from './users.service';
+import {MasterDetailComponent} from '../posts/master-detail.component';
+import {PaginationComponent} from '../shared/pagination.component';
+import {SpinnerComponent} from '../shared/spinner.component';
+import {PostService} from '../posts/post.service';
+import {UsersService} from '../users/users.service';
 import {Post} from './post';
 
 
 
 @Component({
-    templateUrl:'app/posts.component.html',
+    templateUrl:'app/posts/posts.component.html',
     styles : [`
          li { cursor: default; }
          li:hover { background: #ecf0f1; } 

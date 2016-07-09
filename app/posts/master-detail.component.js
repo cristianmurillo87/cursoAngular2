@@ -1,4 +1,4 @@
-System.register(['angular2/core', './spinner.component'], function(exports_1, context_1) {
+System.register(['angular2/core', '../shared/spinner.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -47,7 +47,7 @@ System.register(['angular2/core', './spinner.component'], function(exports_1, co
                 MasterDetailComponent = __decorate([
                     core_1.Component({
                         selector: 'master-detail',
-                        templateUrl: 'app/master-detail.component.html',
+                        templateUrl: 'app/posts/master-detail.component.html',
                         styles: ["\n        .media-object{\n            border-radius: 100%;\n        }\n    "],
                         directives: [spinner_component_1.SpinnerComponent]
                     }), 
